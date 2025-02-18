@@ -1,0 +1,48 @@
+[book]
+authors = ["steven_nyang@qq.com"]
+description = "面向中小型公司的软件项目管理指南"
+language = "zh-cn"
+multilingual = false
+src = "src"
+title = "软件项目管理指南"
+
+[output.html]
+# additional-css = ["./theme/catppuccin.css"]
+# additional-js = ["custom.js"]
+# cname = "myproject.rs"
+copy-fonts = true
+curly-quotes = true
+default-theme = "light"
+# edit-url-template = "https://github.com/rust-lang/mdBook/edit/master/guide/{path}"
+git-repository-icon = "fa-github"
+# git-repository-url = "https://github.com/rust-lang/mdBook"
+# input-404 = "not-found.md"
+mathjax-support = false
+no-section-label = false
+preferred-dark-theme = "navy"
+# site-url = "/example-book/"
+# theme = "my-theme"
+
+[output.html.print]
+enable = true
+
+[output.html.fold]
+enable = false
+level = 0
+
+[output.html.playground]
+copy-js = true
+editable = false
+line-numbers = false
+
+[output.html.search]
+boost-hierarchy = 1
+boost-paragraph = 1
+boost-title = 2
+copy-js = true
+enable = true
+expand = true
+heading-split-level = 3
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
