@@ -1,12 +1,17 @@
 # 软件项目管理规范
 
-## 概述
+## 开始
 
-- [第 01 章 核心概念](./chapter_1.md)
-  专业主义
-  核心三要素：角色，流程，产出物
-- [1-00 公司的组织架构](processes/1-00-organization-structure.md)
-- [1-01 软件项目管理概述](processes/1-01-management-introduction.md)
+- [入门指南](./ch01-00-getting-started.md)
+  - [专业主义](./ch01-01-professionalism.md)
+  - [核心三要素：角色，流程，产出物](./ch01-01-professionalism.md)
+
+## 组织结构
+
+- [组织结构](./ch02-00-orgnization.md)
+  - [公司的技术组织架构](./ch02-01-organization-structure.md)
+  - [软件项目团队的进化](./ch02-02-team-evolution.md)
+  - [1-01 软件项目管理概述](processes/1-01-management-introduction.md)
 
 ## 团队
 

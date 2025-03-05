@@ -1,5 +1,3 @@
-#! https://zhuanlan.zhihu.com/p/662401882
-
 # 项目管理 - 技术部门的组织架构
 
 > 包含 AI 辅助创作
