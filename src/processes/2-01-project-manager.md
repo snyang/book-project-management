@@ -1,5 +1,3 @@
-#! https://zhuanlan.zhihu.com/p/665437968
-
 # 项目经理
 
 > 包含 AI 辅助创作
