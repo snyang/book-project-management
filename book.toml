@@ -1,6 +1,6 @@
 [book]
 authors = ["steven_nyang@qq.com"]
-description = "面向中小型公司的软件项目管理指南"
+description = "软件项目管理指南"
 language = "zh-cn"
 multilingual = false
 src = "src"

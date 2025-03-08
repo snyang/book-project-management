@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>主流程 - 软件项目管理指南</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="软件项目管理指南">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">软件项目管理指南</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="项目主流程"><a class="header" href="#项目主流程">项目主流程</a></h1>
+<h2 id="主流程"><a class="header" href="#主流程">主流程</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>阶段</th><th>任务</th><th>角色</th><th>里程碑</th><th>备注</th></tr></thead><tbody>
+<tr><td>起始阶段</td><td>提交需求说明书</td><td>产品经理</td><td></td><td></td></tr>
+<tr><td></td><td>审阅需求说明书</td><td>所有角色</td><td>需求确认</td><td></td></tr>
+<tr><td>设计阶段</td><td>设计软件</td><td>软件设计</td><td></td><td></td></tr>
+<tr><td></td><td>原型设计</td><td>软件设计</td><td></td><td></td></tr>
+<tr><td></td><td>UI 设计</td><td>UI 设计</td><td></td><td></td></tr>
+<tr><td></td><td>审阅设计</td><td>所有角色</td><td>设计完成</td><td></td></tr>
+<tr><td></td><td>估算开发人月数</td><td>所有角色</td><td>估算完成</td><td></td></tr>
+<tr><td>开发阶段</td><td>迭代 1</td><td>所有角色</td><td>开发里程碑 1</td><td>开发工作和测试工作同时进行</td></tr>
+<tr><td></td><td>迭代 2</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>迭代 3</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>迭代 4</td><td></td><td>开发里程碑 2</td><td></td></tr>
+<tr><td></td><td>…</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>…</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>功能冻结日</td><td></td><td>功能冻结日</td><td></td></tr>
+<tr><td></td><td>功能完成日</td><td></td><td>功能完成日</td><td>功能开发完成日</td></tr>
+<tr><td></td><td>代码冻结日</td><td></td><td>代码冻结日</td><td></td></tr>
+<tr><td>测试阶段</td><td>第 1 轮测试</td><td></td><td></td><td>一般情况下，有 3~4 轮测试</td></tr>
+<tr><td></td><td>第 2 轮测试</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>第 3 轮测试</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>候选发布版 1</td><td></td><td></td><td>候选发布版到项目结束，大概 1 个迭代</td></tr>
+<tr><td></td><td>候选发布版 2</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>…</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>候选发布版 n</td><td></td><td></td><td></td></tr>
+<tr><td>发布阶段</td><td>发布版</td><td></td><td>确定发布版</td><td></td></tr>
+<tr><td></td><td>发布日</td><td></td><td></td><td></td></tr>
+</tbody></table>
+</div>
+<h3 id="说明"><a class="header" href="#说明">说明</a></h3>
+<ul>
+<li>一个迭代一般是 2 周或者 3 周，根据项目的情况，自行做选择。</li>
+<li>一个里程碑一般是 2 个迭代或者 3 个迭代，根据项目的情况，自行做选择。</li>
+<li>测试用例编写在开发阶段就已经开始。</li>
+<li>测试用例审阅在开发阶段中进行。</li>
+<li>功能测试在开发阶段就已经开始。</li>
+<li>功能终止日：功能将不会发生变化。</li>
+<li>功能完成日：功能开发完成。</li>
+<li>代码冻结日：代码提交将进入一个更严格的审核流程。</li>
+</ul>
+<h2 id="项目常见的关键日"><a class="header" href="#项目常见的关键日">项目常见的关键日</a></h2>
+<ul>
+<li>开始日(Kickoff Day)</li>
+<li>功能冻结日(Feature Freeze Day)<br />
+本日之后，不再接受新的需求或者需求变更</li>
+<li>功能开发完成日(Feature Dev Completed)<br />
+所有的功能开发完成。</li>
+<li>功能测试完成日(Feature Testing Completed)<br />
+所有的功能测试完成。</li>
+<li>代码冻结日(Code Freeze Day)<br />
+只能修改 Stop Ship/Critical 的缺陷。<br />
+使用加强版的代码审查流程</li>
+<li>最终翻译采集日(Final L10N Drop Day)<br />
+最后一次向翻译组提供需要被翻译的资源</li>
+<li>文档完成日(Documentation Completed Day)</li>
+<li>用户测试版选出日(Beta Version)</li>
+<li>项目审核申请日<br />
+开发进入项目发布审核流程</li>
+<li>候选版选出日(Release Candidate Version)</li>
+<li>最终版本选出日(Golden Master Version)</li>
+<li>发布日(Publish Day)</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch03-00-process.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="ch03-02-process-doc-review.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch03-00-process.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="ch03-02-process-doc-review.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

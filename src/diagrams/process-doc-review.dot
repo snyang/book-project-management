@@ -1,0 +1,51 @@
+digraph "process-doc-review" {
+    fontname="Consolas"
+    fontsize=9
+    bgcolor="cornsilk"
+    #splines="curved"
+	#size="10,8"
+    #rankdir="TB"
+    label="文档审核流程"
+	node    [
+                colorscheme=paired12 
+                color=3
+                style="rounded,filled" 
+                shape="rectangle" 
+                fontname="Consolas" 
+                fontsize=9
+            ]
+    graph   [color=cadetblue style="rounded" fontname="Consolas"]
+    edge    [color=cadetblue fontname="Consolas" fontsize=9]
+
+    subgraph cluster0 {
+        pencolor="none"
+        "author"         [color=3 shape="oval" label="作者"]
+        label=""
+    }
+
+    subgraph cluster1 {
+        "submitted"         [color=3 label="发出审核邀请"]
+        "reviewing"         [color=1 label="审核"]
+        "question"          [color=1 label="疑问"]
+        "answer"            [color=3 label="解释"]
+        "approved"          [color=1 label="批准"]
+        label=""
+    }
+
+    subgraph cluster2 {
+        pencolor="none"
+        "reviewer"          [color=1 shape="oval" label="审核者"]
+        label=""
+    }
+
+    "author"                -> "submitted" [constraint=false]
+    "reviewer"              -> "reviewing" [constraint=false]
+
+    "submitted"             -> "reviewing"
+    "reviewing"             -> "approved"
+    "reviewing"             -> "question"
+    "answer"                -> "reviewing"
+    "question"              -> "answer"
+
+
+}

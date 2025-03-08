@@ -1,0 +1,59 @@
+digraph "role-process-artifact" {
+    fontname="Consolas"
+    fontsize=9
+    bgcolor="cornsilk"
+    #splines="curved"
+	#size="10,8"
+    #rankdir="TB"
+    label="角色-产出物"
+	node    [
+                colorscheme=paired12 
+                color=3
+                style="rounded,filled" 
+                shape="rectangle" 
+                fontname="Consolas" 
+                fontsize=9
+            ]
+    graph   [color=cadetblue style="rounded" fontname="Consolas"]
+    edge    [color=cadetblue fontname="Consolas" fontsize=9]
+
+    subgraph cluster0 {
+        "doc_analysis"          [color=3 label="需求分析"]
+        "doc_design"            [color=3 label="设计文档"]
+        "doc_design_ui"         [color=3 label="UI设计"]
+        "source_code"           [color=3 label="代码"]
+        "test_case"             [color=3 label="测试用例"]
+        "product"               [color=3 label="产品"]
+        label="产出物"
+    }
+
+    subgraph cluster1 {
+        "product_manager"       [color=3 shape="oval" label="产品经理"]
+        "designer"              [color=3 shape="oval" label="设计师"]
+        "ui_designer"           [color=3 shape="oval" label="UI设计师"]
+        "developer"             [color=3 shape="oval" label="开发工程师"]
+        "qa"                    [color=3 shape="oval" label="测试工程师"]
+        label="角色"
+    }
+
+    "doc_analysis"          -> "doc_design"     [label=""]
+    "doc_analysis"          -> "doc_design_ui"  [label=""]
+    
+    "doc_design"            -> "source_code"    [label=""]
+    "doc_design_ui"         -> "source_code"    [label=""]
+    "doc_design"            -> "test_case"      [label=""]
+    "doc_design_ui"         -> "test_case"      [label=""]
+   
+    "source_code"           -> "product"        [label=""]
+
+    "product_manager"       -> "doc_analysis"   [constraint=false]
+    "designer"              -> "doc_design"     [constraint=false]
+    "ui_designer"           -> "doc_design_ui"  [constraint=false]
+    "developer"             -> "source_code"    [constraint=false]
+    "qa"                    -> "test_case"      [constraint=false]
+
+    "product_manager"       -> "designer"       [style=invis]
+    "product_manager"       -> "ui_designer"    [style=invis]
+    "designer"              -> "developer"      [style=invis]
+    "designer"              -> "qa"             [style=invis]
+}

@@ -1,0 +1,69 @@
+digraph "code-review-process" {
+    fontname="Consolas"
+    fontsize=9
+    bgcolor="cornsilk"
+    #splines="curved"
+	#size="10,8"
+    #rankdir="TB"
+    label="代码审核流程(代码冻结后)"
+	node    [
+                colorscheme=paired12 
+                color=3
+                style="rounded,filled" 
+                shape="rectangle" 
+                fontname="Consolas" 
+                fontsize=9
+            ]
+    graph   [color=cadetblue style="rounded" fontname="Consolas"]
+    edge    [color=cadetblue fontname="Consolas" fontsize=9]
+
+    subgraph cluster0 {
+        pencolor="none"
+        "coder"         [color=3 shape="oval" label="开发者"]
+        label=""
+    }
+
+    subgraph cluster1 {
+        "submitted"         [color=3 label="提交代码到私有分支"]
+        "reviewing"         [color=1 label="审核"]
+        "approved"          [color=1 label="批准"]
+        "question"          [color=1 label="疑问"]
+        "rejected"          [color=1 label="拒绝"]
+        "merged"            [color=3 label="合并代码"]
+        "fix"               [color=3 label="修正代码"]
+        "answer"            [color=3 label="解释"]
+        label=""
+    }
+
+    subgraph cluster2 {
+        "developer"             [color=1 shape="oval" label="开发工程师"]
+        "architect"             [color=1 shape="oval" label="架构师"]
+        "development-manager"   [color=1 shape="oval" label="开发经理"]
+        "qa-mananger"           [color=1 shape="oval" label="测试经理"]
+        "qa"                    [color=1 shape="oval" label="测试工程师"]
+        label=""
+    }
+
+    "coder"                 -> "submitted" [constraint=false]
+    "developer"             -> "reviewing" [constraint=false]
+    "architect"             -> "reviewing" [constraint=false]
+    "development-manager"   -> "reviewing" [constraint=false]
+    "qa-mananger"           -> "reviewing" [constraint=false]
+    "qa"                    -> "reviewing" [constraint=false]
+    "developer"             -> "architect" [style=invis]
+    "architect"             -> "development-manager" [style=invis]
+    "development-manager"   -> "qa-mananger" [style=invis]
+    "qa-mananger"           -> "qa" [style=invis]
+
+    "submitted"             -> "reviewing"
+    "reviewing"             -> "approved"
+    "reviewing"             -> "question"
+    "reviewing"             -> "rejected"
+    "question"              -> "answer"
+    "answer"                -> "reviewing"
+    "rejected"              -> "fix"
+    "fix"                   -> "submitted"
+
+    "approved"             -> "merged"
+
+}

@@ -1,0 +1,42 @@
+digraph "process-feature-management" {
+    fontname="Consolas"
+    fontsize=9
+    bgcolor="cornsilk"
+    #splines="curved"
+	#size="10,8"
+    #rankdir="TB"
+    label="功能开发流程"
+	node    [
+                colorscheme=paired12 
+                color=3
+                style="rounded,filled" 
+                shape="rectangle" 
+                fontname="Consolas" 
+                fontsize=9
+            ]
+    graph   [color=cadetblue style="rounded" fontname="Consolas"]
+    edge    [color=cadetblue fontname="Consolas" fontsize=9]
+
+    subgraph cluster0 {
+        "start"             [color=3 shape="point" label=""]
+        "unassign"          [color=1 label="unassign(未分配)"]
+        "assigned"          [color=1 label="assigned(已分配)"]
+        "rejected"          [color=5 label="rejected(被拒绝)"]
+        "in process"        [color=1 label="in process(工作中)"]
+        "ready to test"     [color=7 label="ready to test(已修复)"]
+        "testing"           [color=7 label="testing(测试中)"]
+        "closed"            [color=3 label="closed(已关闭)"]
+        label=""
+    }
+
+    "start"                 -> "unassign"               [label="开发(任何人)"]
+    "unassign"              -> "assigned"               [label="分配(开发经理)"]
+    
+    "assigned"              -> "in process"             [label="工作(开发)"]
+    "in process"            -> "ready to test"          [label="解决(开发)"]
+    "ready to test"         -> "testing"                [label="工作(测试)"]
+    "testing"               -> "closed"                 [label="验证(测试)"]
+
+    "testing"               -> "rejected"               [label="拒绝(测试)"]
+
+}
