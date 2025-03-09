@@ -1,10 +1,10 @@
 [book]
 authors = ["steven_nyang@qq.com"]
-description = "软件项目管理指南"
+description = "软件项目管理实战"
 language = "zh-cn"
 multilingual = false
 src = "src"
-title = "软件项目管理指南"
+title = "软件项目管理实战"
 
 [output.html]
 # additional-css = ["./theme/catppuccin.css"]
