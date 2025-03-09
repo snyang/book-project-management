@@ -14,19 +14,19 @@
 - 开发经理（Development Manager）
   - 开发组长（Dev Leader）  
     开发组长是开发团队领袖，起到一个技术领导和技术仲裁的作用。
-  - 用户界面设计师（User Interface Designer）
+  - 用户界面设计师（User Interface Designer）  
     在设计工作中偏重于用户界面设计。需要有一定的美术能力。
-  - 用户体验设计师（User Experience Designer）
+  - 用户体验设计师（User Experience Designer）  
     在设计工作中偏重于用户交互方面的设计。
-  - 软件功能设计师（Software Function Designer）
+  - 软件功能设计师（Software Function Designer）  
     在设计工作中偏重于用户界面功能设计。对软件技术更加了解。
   - 系统设计师（System Designer）  
     在设计工作中偏重于系统的架构设计。
-  - 开发架构师（Architect）
+  - 开发架构师（Architect）  
     经验丰富的开发工程师
   - 开发工程师（Developer/Software Engineer）
   - 运维工程师（DevOps Engineer）
-  - 信息工程师（Information Engineer）
+  - 信息工程师（Information Engineer）  
     负责信息的收集、处理、分析和展示  
     编写产品的文档、使用手册。  
     辅助修改 API 文档。
