@@ -38,6 +38,10 @@
   - [项目复盘会议](./ch05-05-project-meeting.md)
   - [演示会议](./ch05-06-demo-meeting.md)
 
+## 模板
+
+- [模板](./ch06-00-template.md)
+
 ## 下一版的内容
 
 - [下一版的内容](./ch99-01-todo.md)

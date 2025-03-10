@@ -417,30 +417,28 @@ This is the most fundamental principle of professionalism: the knowledge of what
 <li>设计完成之后</li>
 </ul>
 <h2 id="估算项目人月数的方法"><a class="header" href="#估算项目人月数的方法">估算项目人月数的方法</a></h2>
+<h3 id="模板人月估算表"><a class="header" href="#模板人月估算表">模板：人月估算表</a></h3>
+<ul>
+<li><a href="./templates/estimation.xlsx">人月估算表</a></li>
+</ul>
 <h3 id="基于开发人月数的估计"><a class="header" href="#基于开发人月数的估计">基于开发人月数的估计</a></h3>
 <p><strong>准备工作</strong><br />
 建立一个项目的特性列表。<br />
 针对每个特性，建立一个功能列表。</p>
 <p><strong>建立估算表</strong><br />
 建立一个 Excel 表格，类似如下</p>
-<div class="table-wrapper"><table><thead><tr><th>功能</th><th>UI(难)</th><th>中</th><th>易</th><th>业务层(难)</th><th>中</th><th>易</th><th>数据层(难)</th><th>中</th><th>易</th></tr></thead><tbody>
-<tr><td>特性 1</td><td></td><td>1</td><td></td><td></td><td>2</td><td></td><td>1</td><td></td><td></td></tr>
-<tr><td>- 功能 1</td><td></td><td>1</td><td></td><td></td><td>2</td><td></td><td>1</td><td></td><td></td></tr>
-</tbody></table>
-</div>
-<p>说明：</p>
+<p><img src="./templates/estimation.png" alt="人月估算表" /><br />
+说明：</p>
 <ul>
-<li>只估计开发的时间<br />
-当然，你也可以根据需要单独估计测试和运维的时间</li>
-<li>可以写小数和整数</li>
-<li>易：代表 1 天</li>
-<li>中：代表 2 天</li>
+<li>只估计开发的时间。（这个模板是根据开发人员的工作量来估计总体时间）<br />
+当然，你也可以根据需要，分别估计管理，开发，测试和运维的时间</li>
+<li>估算值可以输入整数或者小数</li>
 <li>难：代表 5 天</li>
+<li>中：代表 2 天</li>
+<li>易：代表 1 天</li>
+<li>根据经验，修改管理、开发功能、修改缺陷、测试和缓冲系数的占比。</li>
+<li>最后总计就是项目估算的人月数。</li>
 </ul>
-<p>开发时间 = SUM(UI + BS + DB)<br />
-项目估算 = 开发工程师人数 / 1.8 * 团队成员人数 * 1.2<br />
-1.8 是 项目时间 / 开发时间。开发时间占比的倒数。<br />
-1.2 是 弹性参数。</p>
 <blockquote>
 <p>使用上面的方法，在有个多个项目的经验之后，会越来越精确。</p>
 </blockquote>
@@ -590,6 +588,13 @@ This is the most fundamental principle of professionalism: the knowledge of what
 <p>会议内容：</p>
 <ul>
 <li>演示最近的工作，可以是：文档，代码，新功能等等。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="模板"><a class="header" href="#模板">模板</a></h1>
+<p>在本章中，我们列出一些模板：</p>
+<ul>
+<li><a href="./templates/defect-burn-down-plan.xlsx">缺陷燃尽图</a></li>
+<li><a href="./templates/feature-burn-up-plan.xlsx">功能燃起图</a></li>
+<li><a href="./templates/estimation.xlsx">人月估算表</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="下一版的内容"><a class="header" href="#下一版的内容">下一版的内容</a></h1>
 <h2 id="下一版的内容-1"><a class="header" href="#下一版的内容-1">下一版的内容</a></h2>
